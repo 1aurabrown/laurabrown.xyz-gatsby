@@ -9,7 +9,12 @@ module.exports = {
     title: `Laura Brown`,
   },
   plugins: [
-  `gatsby-plugin-netlify-cms`,
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        enableIdentityWidget: false,
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
