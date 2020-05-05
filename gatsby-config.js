@@ -9,6 +9,7 @@ module.exports = {
     title: `Laura Brown`,
   },
   plugins: [
+  `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
