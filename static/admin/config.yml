@@ -1,14 +1,21 @@
 backend:
   name: github
   repo: 1aurabrown/laurabrown.xyz-gatsby
+site_url: https://gatsby.laurabrown.xyz
 media_folder: static/assets
 public_folder: /assets
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - name: project
+    label: Project
+    folder: content/project
     create: true
     fields:
+      - {
+          label: "Key",
+          name: "key",
+          widget: "hidden",
+          default: "project",
+        }
       - { name: path, label: Path }
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
