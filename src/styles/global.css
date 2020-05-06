@@ -3,15 +3,22 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'FaktPro';
-  src: url('../../static/fonts/FaktPro-Blond.eot'); /* IE9 Compat Modes */
-  src: url('../../static/fonts/FaktPro-Blond.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../../static/fonts/FaktPro-Blond.woff') format('woff'), /* Pretty Modern Browsers */
-       url('../../static/fonts/FaktPro-Blond.ttf')  format('truetype'), /* Safari, Android, iOS */
+    font-family: 'LeonardoFascia';
+    src: url('../../static/fonts/leonardofascia-regular.eot');
+    src: url('../../static/fonts/leonardofascia-regular.eot?#iefix') format('embedded-opentype'),
+         url('../../static/fonts/leonardofascia-regular.woff') format('woff'),
+         url('../../static/fonts/leonardofascia-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  font-family: "LeonardoFascia", 'sans-serif';
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 * {
   font-weight: normal;
-  color: red;
 }
 

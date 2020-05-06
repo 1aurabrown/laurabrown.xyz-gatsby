@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg  viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>right circle</title>
+    <g id="right-circle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M25,50 C38.8071187,50 50,38.8071187 50,25 C50,11.1928813 38.8071187,0 25,0 L25,50 Z" id="Oval" fill="#000000"></path>
+    </g>
+</svg>

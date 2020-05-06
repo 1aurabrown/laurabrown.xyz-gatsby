@@ -21,6 +21,14 @@ module.exports = {
   plugins: [
     `gatsby-plugin-postcss`,
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-prismic-graphql',
       options: {
         repositoryName: process.env.PRISMIC_REPOSITORY, // required

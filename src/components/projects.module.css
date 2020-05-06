@@ -1,6 +1,48 @@
+.projects th,
+.projects td {
+  padding: 0 10px;
+}
+
+.projects th:first-child,
+.projects td:first-child {
+  padding-left: 3px;
+}
+
+.projects th:last-child,
+.projects td:last-child {
+  padding-right: 3px;
+}
+
+.role {
+  width:1%;
+  white-space:nowrap;
+}
+
 .dottedBorder {
   background-size: 100% 1px;
-  background: url("../assets/dotted-line.svg");
+  background: url("../../static/svg/dotted-line.svg");
   background-repeat: no-repeat;
   background-position: bottom;
+}
+
+.circle {
+  width: 1em;
+  height: 1em;
+  background-repeat: no-repeat;
+  background-fit: contain;
+  background-position: center;
+  display: inline-block;
+}
+
+.circleLeft {
+  background-image: url('../../static/svg/circle-left.svg');
+}
+
+.circleRight {
+  background-image: url('../../static/svg/circle-right.svg')
+
+}
+
+.circleFull {
+  background-image: url('../../static/svg/circle-full.svg')
 }
