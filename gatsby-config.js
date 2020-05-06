@@ -4,18 +4,22 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
+let env = process.env.NODE_ENV;
+
+let path = '.env' + `.${env ? env : 'development'}`
+
+require('dotenv').config({
+  path: path
+});
+
+console.log(env, path, process.env)
+
 module.exports = {
   siteMetadata: {
     title: `Laura Brown`,
   },
   plugins: [
-    `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    `gatsby-plugin-postcss`,
     {
       resolve: 'gatsby-source-prismic-graphql',
       options: {
