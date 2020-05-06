@@ -9,20 +9,6 @@ module.exports = {
     title: `Laura Brown`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-netlify-cms`,
-      options: {
-        enableIdentityWidget: false,
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/content`,
-      },
-    },
-    `gatsby-transformer-remark`,
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-typography`,
@@ -30,5 +16,27 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: 'gatsby-source-prismic-graphql',
+      options: {
+        repositoryName: process.env.PRISMIC_REPOSITORY, // required
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN, // optional
+        defaultLang: 'en-us', // optional, but recommended
+        // path: '/preview', // optional, default: /preview
+        // previews: true, // optional, default: false
+        // pages: [{ // optional
+        //   type: 'Article', // TypeName from prismic
+        //   match: '/article/:uid', // pages will be generated under this pattern
+        //   previewPath: '/article', // optional path for unpublished documents
+        //   component: require.resolve('./src/templates/article.js'),
+        //   sortBy: 'date_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
+        // }],
+        // extraPageFields: 'article_type', // optional, extends pages query to pass extra fields
+        // sharpKeys: [
+        //   /image|photo|picture/, // (default)
+        //   'profilepic',
+        // ],
+      }
+    }
   ],
 }
