@@ -1,13 +1,12 @@
 import React from "react"
 import Header from './header'
 import './layout.css'
-import styles from './layout.module.css'
 
 export default function Layout({ children }) {
   return (
-    <div className={styles.layout}>
+    <div className="px-8 max-w-screen-lg mx-auto">
       <Header></Header>
-      <div>
+      <div className="">
         {children}
       </div>
     </div>

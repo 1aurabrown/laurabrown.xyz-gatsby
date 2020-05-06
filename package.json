@@ -17,6 +17,7 @@
     "@emotion/core": "^10.0.28",
     "gatsby": "^2.21.0",
     "gatsby-plugin-postcss": "^2.3.1",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-prismic-graphql": "^3.6.2",
     "netlify-cms-app": "^2.12.12",
     "prismic-javascript": "^2.7.1",

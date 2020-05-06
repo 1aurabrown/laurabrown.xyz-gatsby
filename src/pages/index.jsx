@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
-import { RichText } from "prismic-reactjs"
+import Projects from '../components/projects'
 
 export default function Home({ data }) {
   const projects = data.prismic.allProjects.edges
@@ -11,32 +11,6 @@ export default function Home({ data }) {
         <Projects projects={projects}></Projects>
       </div>
     </Layout>
-  )
-}
-
-const Projects = ({ projects }) => {
-  if (!projects) return null
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Year</th>
-          <th>Role</th>
-        </tr>
-      </thead>
-      <tbody>
-        {projects.map(({ node }, index) => (
-          <tr key={node._meta.id}>
-            <td>{node.title}</td>
-            <td>{node.description ? RichText.asText(node.description) : ''}</td>
-            <td>{node.year}</td>
-            <td>{node.role}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
   )
 }
 

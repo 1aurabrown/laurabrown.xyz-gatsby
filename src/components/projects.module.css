@@ -1,0 +1,6 @@
+.dottedBorder {
+  background-size: 100% 1px;
+  background: url("../assets/dotted-line.svg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+}

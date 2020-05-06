@@ -38,11 +38,11 @@ export default function Header() {
   const navigation = data.prismic.allNavigations.edges[0].node
 
   return (
-    <header className="flex flex-row">
-      <h1>{data.site.siteMetadata.title}</h1>
-      <ul>
+    <header className="py-10 flex flex-row justify-between items-end">
+      <h1 className="leading-7 md:text-4xl">{data.site.siteMetadata.title}</h1>
+      <ul className="leading-5 md:text-2xl flex flex-row justify-end">
         {navigation.nav_item.map((nav_item, index) => (
-          <li key={index}><Link to={linkResolver(nav_item.link._meta)}>{nav_item.link_text}</Link></li>
+          <li className="ml-4" key={index}><Link to={linkResolver(nav_item.link._meta)}>{nav_item.link_text}</Link></li>
         ))}
       </ul>
     </header>

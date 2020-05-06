@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'FaktPro';
+  src: url('../../static/fonts/FaktPro-Blond.eot'); /* IE9 Compat Modes */
+  src: url('../../static/fonts/FaktPro-Blond.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../static/fonts/FaktPro-Blond.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../../static/fonts/FaktPro-Blond.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+* {
+  font-weight: normal;
+  color: red;
+}
+
