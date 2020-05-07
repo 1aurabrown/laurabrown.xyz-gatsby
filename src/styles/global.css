@@ -3,17 +3,27 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'LeonardoFascia';
-    src: url('../../static/fonts/leonardofascia-regular.eot');
-    src: url('../../static/fonts/leonardofascia-regular.eot?#iefix') format('embedded-opentype'),
-         url('../../static/fonts/leonardofascia-regular.woff') format('woff'),
-         url('../../static/fonts/leonardofascia-regular.ttf') format('truetype');
+    font-family: 'ColumbiaSans';
+    src: url('../../static/fonts/columbiasansw-extralight.eot');
+    src: url('../../static/fonts/columbiasansw-extralight.eot?#iefix') format('embedded-opentype'),
+         url('../../static/fonts/columbiasansw-extralight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GTAmerica';
+    src: url('../../static/fonts/GT-America-Standard-Light.eot');
+    src: url('../../static/fonts/GT-America-Standard-Light.eot?#iefix') format('embedded-opentype'),
+         url('../../static/fonts/GT-America-Standard-Light.woff') format('woff'),
+         url('../../static/fonts/GT-America-Standard-Light.woff2') format('woff2'),
+         url('../../static/fonts/GT-America-Standard-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-  font-family: "LeonardoFascia", 'sans-serif';
+  font-family: "ColumbiaSans", 'sans-serif';
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }

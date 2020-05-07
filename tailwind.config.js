@@ -3,7 +3,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        leonardo: ['LeonardoFascia', 'Georgia', 'sans-serif'],
+        america: ['GTAmerica', 'sans-serif'],
+        columbia: ['ColumbiaSans', 'sans-serif'],
       },
       borderColor: theme => ({
         ...theme('colors'),
