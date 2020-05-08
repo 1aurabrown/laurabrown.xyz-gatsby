@@ -1,6 +1,7 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
 import styles from './projects.module.css'
+import Collapse from "@kunukn/react-collapse";
 
 export default class Projects extends React.Component {
   constructor(props) {
@@ -25,26 +26,53 @@ export default class Projects extends React.Component {
     }
   }
 
+  onToggle = (id) => {
+    this.setState(state => ({ selected: state.selected === id ? null : id }));
+
+  };
+
   projectRow(project) {
     const circleClass = this.circleClass(project)
     return (
-      <React.Fragment key={project._meta.id} >
-        <tr className={styles.dottedBorder + ' md:text-2xl'} key={project._meta.id} onClick={() => this.toggleSelected(project._meta.id)}>
-          <td>{project.title}</td>
-          <td>{project.year}</td>
-          <td class={styles.role + ' text-center'}>
-            <div className={`${styles.circle} ${circleClass}`}></div>
-          </td>
-        </tr>
+      <React.Fragment key={project._meta.id}>
+        <div
+        onClick={() => this.onToggle(project._meta.id)}
+        className='md:text-2xl'>
+          {project.title}
+        </div>
 
+        <div
+        onClick={() => this.onToggle(project._meta.id)}
+        className='md:text-2xl'>
+          {project.year}
+        </div>
 
-        {project.description && this.state.selected === project._meta.id &&(
-          <tr key={project._meta.id} class="font-america border-b border-solid">
-            <td colspan='3' className='py-4'>{RichText.asText(project.description)}</td>
-          </tr>
-        )}
+        <div
+        onClick={() => this.onToggle(project._meta.id)}
+        className='text-center md:text-2xl'>
+          <div className={`${styles.circle} ${circleClass}`}></div>
+        </div>
+
+        {this.dottedDivider()}
+
+        { project.description &&
+          <Collapse
+          className={styles.collapsable + " font-america col-start-1 col-end-4"}
+          isOpen={this.state.selected === project._meta.id }>
+            <div className='py-4'>{RichText.asText(project.description)}</div>
+            {this.solidDivider()}
+          </Collapse>
+        }
       </React.Fragment>
     )
+  }
+
+  solidDivider() {
+    return (<hr className="col-start-1 col-end-4"></hr>)
+  }
+
+  dottedDivider() {
+    return (<hr className={styles.dottedBorder + " col-start-1 col-end-4"}></hr>)
   }
 
   render() {
@@ -52,24 +80,19 @@ export default class Projects extends React.Component {
     if (!projects) return ''
 
     return (
-      <table className={styles.projects + ' w-full leading-10'}>
-        <thead className="font-america">
-          <tr className='text-left border-solid border-b'>
-            <th>Title</th>
-            <th>Year</th>
-            <th class={styles.role + ' text-center'}>Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            projects.map(({ node }, index) => {
-              return (
-                this.projectRow(node)
-              )
-            })
-          }
-        </tbody>
-      </table>
+      <div className={styles.projects + ' leading-10'}>
+        <div className='font-america'>Title</div>
+        <div className='font-america'>Year</div>
+        <div className='text-center font-america'>Role</div>
+        { this.solidDivider() }
+        {
+          projects.map(({ node }, index) => {
+            return (
+              this.projectRow(node)
+            )
+          })
+        }
+      </div>
     )
   }
 }

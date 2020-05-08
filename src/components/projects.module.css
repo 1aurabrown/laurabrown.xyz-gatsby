@@ -14,11 +14,21 @@
   padding-right: 3px;
 }
 
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto, 3);
+}
 .projects td {
   line-height: 3rem
 }
 
+.collapsable {
+  transition: height .3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .dottedBorder {
+  height: 1px;
+  border-width: 0 0 0 0;
   background-size: 100% 1px;
   background: url("../../static/svg/dotted-line.svg");
   background-repeat: no-repeat;
