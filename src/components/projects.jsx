@@ -2,7 +2,6 @@ import React from "react"
 import styles from './projects.module.css'
 import Collapse from "@kunukn/react-collapse";
 import parse from 'html-react-parser';
-import DOMPurify from 'dompurify';
 
 export default class Projects extends React.Component {
   constructor(props) {
@@ -68,7 +67,7 @@ export default class Projects extends React.Component {
           isOpen={this.state.selected === project.id }>
             <div className={ 'max-w-screen-sm pt-4 pb-6'}>
               <div>
-                {parse(DOMPurify.sanitize(project.data.description.html))}
+                {parse(project.data.description.html)}
               </div>
               <div className="mt-2 font-compagnon text-base" >
                 <a href={project.data.url.url} target="_blank">{project.data.url.url.replace('https://', '').replace('http://', '')} ↗</a>
