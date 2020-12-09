@@ -1,8 +1,8 @@
+@import './circle.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import './circle.css';
 
 @layer base {
   @import url("https://fast.fonts.net/lt/1.css?apiType=css&c=c69df2d9-bca3-42ae-b0a7-9d789edf3b68&fontids=721263");
@@ -59,6 +59,10 @@
 
   .font-compagnon {
     visibility: hidden;
+
+    body.loaded & {
+      visibility: visible;
+    }
   }
 
   body.loaded .font-compagnon {
