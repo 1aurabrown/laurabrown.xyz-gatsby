@@ -57,17 +57,26 @@
     font-style: normal;
   }
 
-  .font-compagnon {
-    visibility: hidden;
+  body {
+    font-family: "GTAmerica", sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    body.loaded & {
-      visibility: visible;
+  * {
+    font-weight: normal;
+  }
+  p a {
+    text-decoration: underline;
+  }
+  @media (hover:hover) {
+    a:hover {
+      text-decoration: underline;
     }
   }
+}
 
-  body.loaded .font-compagnon {
-    visibility: visible;
-  }
+@layer utilities {
 
   .font-compagnon, /* default fall-back */
   .compagnon-bold .font-compagnon {
@@ -85,22 +94,13 @@
   .compagnon-roman .font-compagnon {
     font-family: Compagnon-Roman, serif;
   }
+}
 
-  body {
-    font-family: "GTAmerica", sans-serif;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-  }
 
-  * {
-    font-weight: normal;
-  }
-  p a {
-    text-decoration: underline;
-  }
-  @media (hover:hover) {
-    a:hover {
-      text-decoration: underline;
-    }
+.font-compagnon {
+  visibility: hidden;
+
+  body.loaded & {
+    visibility: visible;
   }
 }
