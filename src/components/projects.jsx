@@ -1,7 +1,8 @@
 import React from "react"
-import { RichText } from "prismic-reactjs"
 import styles from './projects.module.css'
 import Collapse from "@kunukn/react-collapse";
+import parse from 'html-react-parser';
+import DOMPurify from 'dompurify';
 
 export default class Projects extends React.Component {
   constructor(props) {
@@ -14,52 +15,65 @@ export default class Projects extends React.Component {
     this.setState(state => ({ selected: state.selected === id ? null : id }));
   }
 
+  onToggle(id) {
+    this.setState(state => ({ selected: state.selected === id ? null : id }));
+  }
+
   circleClass(project) {
-    if ( project.role === "Design") {
-      return styles.circleLeft
-    } else if ( project.role === "Development") {
-      return styles.circleRight
-    } else if ( project.role === "Design + Development") {
-      return styles.circleFull
+    if ( project.data.role === "Design") {
+      return 'circle--left'
+    } else if ( project.data.role === "Development") {
+      return 'circle--right'
+    } else if ( project.data.role === "Design + Development") {
+      return 'circle--full'
     } else {
       return ''
     }
   }
 
-  onToggle = (id) => {
-    this.setState(state => ({ selected: state.selected === id ? null : id }));
-
-  };
 
   projectRow(project) {
-    const circleClass = this.circleClass(project)
+    const titleRowClass = 'font-compagnon cursor-pointer py-1 md:text-xl'
     return (
-      <React.Fragment key={project._meta.id}>
+      <React.Fragment key={project.id}>
         <div
-        onClick={() => this.onToggle(project._meta.id)}
-        className='md:text-2xl'>
-          {project.title}
+        onClick={() => this.onToggle(project.id)}
+        className={titleRowClass}>
+          <h2>{project.data.title}</h2>
         </div>
 
         <div
-        onClick={() => this.onToggle(project._meta.id)}
-        className='md:text-2xl'>
-          {project.year}
+        onClick={() => this.onToggle(project.id)}
+        className={titleRowClass}>
+          {project.data.year}
         </div>
 
         <div
-        onClick={() => this.onToggle(project._meta.id)}
-        className='text-center md:text-2xl'>
-          <div className={`${styles.circle} ${circleClass}`}></div>
+        onClick={() => this.onToggle(project.id)}
+        className={titleRowClass + ' text-center'}>
+          <div className={this.circleClass(project) + ' circle'}></div>
+        </div>
+
+
+        <div
+        className={titleRowClass + ' text-center'}>
+          <a href={project.data.url.url} target="_blank">↗</a>
         </div>
 
         {this.dottedDivider()}
 
-        { project.description &&
+        { project.data.description.html &&
           <Collapse
-          className={styles.collapsable + " font-america col-start-1 col-end-4"}
-          isOpen={this.state.selected === project._meta.id }>
-            <div className='py-4'>{RichText.asText(project.description)}</div>
+          className={styles.collapsable + " text-sm col-span-4"}
+          isOpen={this.state.selected === project.id }>
+            <div className={ 'max-w-screen-sm pt-4 pb-6'}>
+              <div>
+                {parse(DOMPurify.sanitize(project.data.description.html))}
+              </div>
+              <div className="mt-2 font-compagnon text-base" >
+                <a href={project.data.url.url} target="_blank">{project.data.url.url.replace('https://', '').replace('http://', '')} ↗</a>
+              </div>
+            </div>
             {this.solidDivider()}
           </Collapse>
         }
@@ -68,22 +82,23 @@ export default class Projects extends React.Component {
   }
 
   solidDivider() {
-    return (<hr className="col-start-1 col-end-4"></hr>)
+    return (<hr className="col-span-4"></hr>)
   }
 
   dottedDivider() {
-    return (<hr className={styles.dottedBorder + " col-start-1 col-end-4"}></hr>)
+    return (<hr className={styles.dottedBorder + " col-span-4"}></hr>)
   }
 
   render() {
     const projects = this.props.projects
     if (!projects) return ''
-
+    const labelsClass = 'py-2 text-xs md:text-sm'
     return (
-      <div className={styles.projects + ' leading-10'}>
-        <div className='font-america'>Title</div>
-        <div className='font-america'>Year</div>
-        <div className='text-center font-america'>Role</div>
+      <div className={styles.projects}>
+        <div className={labelsClass}>Title</div>
+        <div className={labelsClass}>Year</div>
+        <div className={labelsClass + ' text-center'}>Role</div>
+        <div className={labelsClass + ' text-center'}>View</div>
         { this.solidDivider() }
         {
           projects.map(({ node }, index) => {

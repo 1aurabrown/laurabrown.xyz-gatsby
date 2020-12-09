@@ -1,25 +1,6 @@
-.projects th,
-.projects td {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.projects th:first-child,
-.projects td:first-child {
-  padding-left: 3px;
-}
-
-.projects th:last-child,
-.projects td:last-child {
-  padding-right: 3px;
-}
-
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto, 3);
-}
-.projects td {
-  line-height: 3rem
+  grid-template-columns: minmax(auto, 3fr) minmax(auto, 2fr) minmax(auto, 1fr) minmax(auto, 1fr);
 }
 
 .collapsable {
@@ -35,24 +16,3 @@
   background-position: bottom;
 }
 
-.circle {
-  width: .75em;
-  height: .75em;
-  background-repeat: no-repeat;
-  background-fit: contain;
-  background-position: center;
-  display: inline-block;
-}
-
-.circleLeft {
-  background-image: url('../../static/svg/circle-left.svg');
-}
-
-.circleRight {
-  background-image: url('../../static/svg/circle-right.svg')
-
-}
-
-.circleFull {
-  background-image: url('../../static/svg/circle-full.svg')
-}

@@ -29,26 +29,28 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-prismic-graphql',
+    resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: process.env.PRISMIC_REPOSITORY, // required
         accessToken: process.env.PRISMIC_ACCESS_TOKEN, // optional
-        defaultLang: 'en-us', // optional, but recommended
-        // path: '/preview', // optional, default: /preview
-        // previews: true, // optional, default: false
-        // pages: [{ // optional
-        //   type: 'Article', // TypeName from prismic
-        //   match: '/article/:uid', // pages will be generated under this pattern
-        //   previewPath: '/article', // optional path for unpublished documents
-        //   component: require.resolve('./src/templates/article.js'),
-        //   sortBy: 'date_ASC', // optional, default: meta_lastPublicationDate_ASC; useful for pagination
-        // }],
-        // extraPageFields: 'article_type', // optional, extends pages query to pass extra fields
-        // sharpKeys: [
-        //   /image|photo|picture/, // (default)
-        //   'profilepic',
-        // ],
-      }
-    }
+        linkResolver: ({ node, key, value }) => (doc) => {
+          // Route for projects
+          if (doc.type === "project") {
+            return "/projecto/" + doc.uid
+          }
+          // Route for pages
+          if (doc.type === "page") {
+            return "/" + doc.uid
+          }
+          // Homepage route fallback
+          return "/"
+        },
+        schemas: {
+          project: require('./src/schemas/project.json'),
+        },
+        lang: 'en-us',
+        prismicToolbar: true,
+      },
+    },
   ],
 }

@@ -1,0 +1,23 @@
+@layer utilities {
+  .circle {
+    width: .75em;
+    height: .75em;
+    background-repeat: no-repeat;
+    background-fit: contain;
+    background-position: center;
+    display: inline-block;
+  }
+
+  .circle--left {
+    background-image: url('../../static/svg/circle-left.svg');
+  }
+
+  .circle--right {
+    background-image: url('../../static/svg/circle-right.svg')
+
+  }
+
+  .circle--full {
+    background-image: url('../../static/svg/circle-full.svg')
+  }
+}

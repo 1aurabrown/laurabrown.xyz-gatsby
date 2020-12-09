@@ -1,5 +1,26 @@
-import "./src/styles/global.css"
+import './src/styles/global.css';
 
-const { registerLinkResolver } = require("gatsby-source-prismic-graphql")
-const { linkResolver } = require("./src/utils/linkResolver")
-registerLinkResolver(linkResolver)
+export const onClientEntry = () => {
+  window.onload = () => {
+    var bodyClass;
+    switch (Math.floor(Math.random() * 5)) {
+      case 0:
+        bodyClass = 'compagnon-bold';
+        break;
+      case 1:
+        bodyClass = 'compagnon-italic';
+        break;
+      case 2:
+        bodyClass = 'compagnon-light';
+        break;
+      case 3:
+        bodyClass = 'compagnon-medium';
+        break;
+      case 4:
+        bodyClass = 'compagnon-roman';
+        break;
+    }
+    document.body.classList.add(bodyClass)
+    document.body.classList.add('loaded')
+  }
+}

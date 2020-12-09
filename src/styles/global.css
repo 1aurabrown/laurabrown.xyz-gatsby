@@ -2,16 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'ColumbiaSans';
-    src: url('../../static/fonts/columbiasansw-extralight.eot');
-    src: url('../../static/fonts/columbiasansw-extralight.eot?#iefix') format('embedded-opentype'),
-         url('../../static/fonts/columbiasansw-extralight.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import './circle.css';
 
-@font-face {
+@layer base {
+  @import url("https://fast.fonts.net/lt/1.css?apiType=css&c=c69df2d9-bca3-42ae-b0a7-9d789edf3b68&fontids=721263");
+  @font-face{
+    font-family:"Compagnon-Bold";
+    src:url("../../static/fonts/Compagnon-Bold.eot?#iefix");
+    src:url("../../static/fonts/Compagnon-Bold.eot?#iefix") format("eot"),
+        url("../../static/fonts/Compagnon-Bold.woff2") format("woff2"),
+        url("../../static/fonts/Compagnon-Bold.woff") format("woff");
+  }
+
+  @font-face{
+    font-family:"Compagnon-Italic";
+    src:url("../../static/fonts/Compagnon-Italic.eot?#iefix");
+    src:url("../../static/fonts/Compagnon-Italic.eot?#iefix") format("eot"),
+        url("../../static/fonts/Compagnon-Italic.woff2") format("woff2"),
+        url("../../static/fonts/Compagnon-Italic.woff") format("woff");
+  }
+
+  @font-face{
+    font-family:"Compagnon-Light";
+    src:url("../../static/fonts/Compagnon-Light.eot?#iefix");
+    src:url("../../static/fonts/Compagnon-Light.eot?#iefix") format("eot"),
+        url("../../static/fonts/Compagnon-Light.woff2") format("woff2"),
+        url("../../static/fonts/Compagnon-Light.woff") format("woff");
+  }
+
+  @font-face{
+    font-family:"Compagnon-Medium";
+    src:url("../../static/fonts/Compagnon-Medium.eot?#iefix");
+    src:url("../../static/fonts/Compagnon-Medium.eot?#iefix") format("eot"),
+        url("../../static/fonts/Compagnon-Medium.woff2") format("woff2"),
+        url("../../static/fonts/Compagnon-Medium.woff") format("woff");
+  }
+
+  @font-face{
+    font-family:"Compagnon-Roman";
+    src:url("../../static/fonts/Compagnon-Roman.eot?#iefix");
+    src:url("../../static/fonts/Compagnon-Roman.eot?#iefix") format("eot"),
+        url("../../static/fonts/Compagnon-Roman.woff2") format("woff2"),
+        url("../../static/fonts/Compagnon-Roman.woff") format("woff");
+  }
+
+  @font-face {
     font-family: 'GTAmerica';
     src: url('../../static/fonts/GT-America-Standard-Light.eot');
     src: url('../../static/fonts/GT-America-Standard-Light.eot?#iefix') format('embedded-opentype'),
@@ -20,15 +55,48 @@
          url('../../static/fonts/GT-America-Standard-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
+  }
 
-body {
-  font-family: "ColumbiaSans", 'sans-serif';
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-}
+  .font-compagnon {
+    visibility: hidden;
+  }
 
-* {
-  font-weight: normal;
-}
+  body.loaded .font-compagnon {
+    visibility: visible;
+  }
 
+  .font-compagnon, /* default fall-back */
+  .compagnon-bold .font-compagnon {
+    font-family: Compagnon-Bold, serif;
+  }
+  .compagnon-italic .font-compagnon {
+    font-family: Compagnon-Italic, serif;
+  }
+  .compagnon-light .font-compagnon {
+    font-family: Compagnon-Light, serif;
+  }
+  .compagnon-medium .font-compagnon {
+    font-family: Compagnon-Medium, serif;
+  }
+  .compagnon-roman .font-compagnon {
+    font-family: Compagnon-Roman, serif;
+  }
+
+  body {
+    font-family: "GTAmerica", sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    font-weight: normal;
+  }
+  p a {
+    text-decoration: underline;
+  }
+  @media (hover:hover) {
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
