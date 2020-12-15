@@ -6,6 +6,18 @@
 
 @layer base {
   @import url("https://fast.fonts.net/lt/1.css?apiType=css&c=c69df2d9-bca3-42ae-b0a7-9d789edf3b68&fontids=721263");
+   @font-face {
+    font-family: 'open-arrow';
+    src: url('../../static/fonts/OpenArrow-Regular.eot') format('embedded-opentype'),
+         url('../../static/fonts/OpenArrow-Regular.woff2') format('woff2'),
+         url('../../static/fonts/OpenArrow-Regular.woff') format('woff'),
+         url('../../static/fonts/OpenArrow-Regular.otf') format('opentype'),
+         url('../../static/fonts/OpenArrow-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    unicode-range: U+2190-21ff;
+  }
+
   @font-face{
     font-family:"Compagnon-Bold";
     src:url("../../static/fonts/Compagnon-Bold.eot?#iefix");
@@ -58,16 +70,13 @@
   }
 
   body {
-    font-family: "GTAmerica", sans-serif;
+    font-family: 'open-arrow', "GTAmerica", sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
 
   * {
     font-weight: normal;
-  }
-  p a {
-    text-decoration: underline;
   }
   @media (hover:hover) {
     a:hover {
@@ -78,21 +87,26 @@
 
 @layer utilities {
 
-  .font-compagnon, /* default fall-back */
-  .compagnon-bold .font-compagnon {
-    font-family: Compagnon-Bold, serif;
+  .font-compagnon, .compagnon-links a {
+    &, .compagnon-bold & {
+      font-family: 'open-arrow', Compagnon-Bold, serif;
+    }
+    .compagnon-italic & {
+      font-family: 'open-arrow', Compagnon-Italic, serif;
+    }
+    .compagnon-light & {
+      font-family: 'open-arrow', Compagnon-Light, serif;
+    }
+    .compagnon-medium & {
+      font-family: 'open-arrow', Compagnon-Medium, serif;
+    }
+    .compagnon-roman & {
+      font-family: 'open-arrow', Compagnon-Roman, serif;
+    }
   }
-  .compagnon-italic .font-compagnon {
-    font-family: Compagnon-Italic, serif;
-  }
-  .compagnon-light .font-compagnon {
-    font-family: Compagnon-Light, serif;
-  }
-  .compagnon-medium .font-compagnon {
-    font-family: Compagnon-Medium, serif;
-  }
-  .compagnon-roman .font-compagnon {
-    font-family: Compagnon-Roman, serif;
+
+  .underline-links a {
+    text-decoration: underline;
   }
 }
 
@@ -103,4 +117,8 @@
   body.loaded & {
     visibility: visible;
   }
+}
+
+.--c-collapsed a {
+  visibility: hidden;
 }

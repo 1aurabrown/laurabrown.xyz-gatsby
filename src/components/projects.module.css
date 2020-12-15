@@ -1,6 +1,6 @@
-.projects {
+.projectsGrid {
   display: grid;
-  grid-template-columns: minmax(auto, 3fr) minmax(auto, 2fr) minmax(auto, 1fr) minmax(auto, 1fr);
+  grid-template-columns: minmax(auto, 5fr) minmax(auto, 3fr) minmax(auto, 1fr) minmax(auto, 1fr);
 }
 
 .collapsable {

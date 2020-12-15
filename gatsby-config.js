@@ -47,6 +47,8 @@ module.exports = {
         },
         schemas: {
           project: require('./src/schemas/project.json'),
+          about_text: require('./src/schemas/about_text.json'),
+          footer_text: require('./src/schemas/footer_text.json'),
         },
         lang: 'en-us',
         prismicToolbar: true,

@@ -2,14 +2,16 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      fontFamily: {
-        america: ['GTAmerica', 'sans-serif'],
-        columbia: ['ColumbiaSans', 'sans-serif'],
-      },
       borderColor: theme => ({
         ...theme('colors'),
         default: theme('black', 'currentColor'),
       }),
+      fontSize: {
+        '2xl': '1.5rem',
+        '3xl': '1.75rem',
+        '4xl': '2rem',
+        '5xl': '2.512rem'
+      }
     },
   },
   variants: {},

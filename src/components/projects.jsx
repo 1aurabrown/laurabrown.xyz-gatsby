@@ -14,6 +14,12 @@ export default class Projects extends React.Component {
     this.setState(state => ({ selected: state.selected === id ? null : id }));
   }
 
+  onKeyPress(e, id) {
+    if (e.charCode === 13) {
+      this.onToggle(id);
+    }
+  }
+
   onToggle(id) {
     this.setState(state => ({ selected: state.selected === id ? null : id }));
   }
@@ -32,10 +38,13 @@ export default class Projects extends React.Component {
 
 
   projectRow(project) {
-    const titleRowClass = 'font-compagnon cursor-pointer py-1 md:text-xl'
+    const titleRowClass = 'hover:underline text-sm sm:text-base font-compagnon cursor-pointer py-1'
     return (
       <React.Fragment key={project.id}>
         <div
+        tabIndex="0"
+        role="link"
+        onKeyPress={(e) => this.onKeyPress(e, project.id)}
         onClick={() => this.onToggle(project.id)}
         className={titleRowClass}>
           <h2>{project.data.title}</h2>
@@ -54,24 +63,37 @@ export default class Projects extends React.Component {
         </div>
 
 
-        <div
-        className={titleRowClass + ' text-center'}>
-          <a href={project.data.url.url} target="_blank">↗</a>
-        </div>
+        { project.data.url.url &&
+          <div
+          className={titleRowClass + ' text-center'}>
+            <a href={project.data.url.url} rel="noopener" target="_blank">↗</a>
+          </div>
+        }
 
         {this.dottedDivider()}
 
         { project.data.description.html &&
           <Collapse
-          className={styles.collapsable + " text-sm col-span-4"}
+          addState={true}
+          className={styles.collapsable + " text-sm col-span-4 underline-links"}
           isOpen={this.state.selected === project.id }>
             <div className={ 'max-w-screen-sm pt-4 pb-6'}>
               <div>
                 {parse(project.data.description.html)}
               </div>
-              <div className="mt-2 font-compagnon text-base" >
-                <a href={project.data.url.url} target="_blank">{project.data.url.url.replace('https://', '').replace('http://', '')} ↗</a>
-              </div>
+              {project.data.url.url &&
+                <div className="mt-2 font-compagnon text-sm" >
+                  <a
+                  href={project.data.url.url + '#test'}
+                  rel="noopener"
+                  target="_blank">
+                    {project.data.url.url
+                      .replace('https://', '')
+                      .replace('http://', '')
+                    } ↗
+                  </a>
+                </div>
+              }
             </div>
             {this.solidDivider()}
           </Collapse>
@@ -91,21 +113,24 @@ export default class Projects extends React.Component {
   render() {
     const projects = this.props.projects
     if (!projects) return ''
-    const labelsClass = 'py-2 text-xs md:text-sm'
+    const labelsClass = 'py-2 text-xs'
     return (
-      <div className={styles.projects}>
-        <div className={labelsClass}>Title</div>
-        <div className={labelsClass}>Year</div>
-        <div className={labelsClass + ' text-center'}>Role</div>
-        <div className={labelsClass + ' text-center'}>View</div>
-        { this.solidDivider() }
-        {
-          projects.map(({ node }, index) => {
-            return (
-              this.projectRow(node)
-            )
-          })
-        }
+      <div className="pt-12">
+        <h2 className="font-compagnon mb-4 text-lg">Selected Projects</h2>
+        <div className={styles.projectsGrid}>
+          <div className={labelsClass}>Title</div>
+          <div className={labelsClass}>Year</div>
+          <div className={labelsClass + ' text-center'}>Role</div>
+          <div className={labelsClass + ' text-center'}>View</div>
+          { this.solidDivider() }
+          {
+            projects.map(({ node }, index) => {
+              return (
+                this.projectRow(node)
+              )
+            })
+          }
+        </div>
       </div>
     )
   }
