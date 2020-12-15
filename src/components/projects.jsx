@@ -58,14 +58,14 @@ export default class Projects extends React.Component {
 
         <div
         onClick={() => this.onToggle(project.id)}
-        className={titleRowClass + 'text-center'}>
+        className={titleRowClass + ' text-center'}>
           <div className={this.circleClass(project) + ' circle'}></div>
         </div>
 
 
         { project.data.url.url &&
           <div
-          className={titleRowClass + 'text-center'}>
+          className={titleRowClass + ' text-center'}>
             <a href={project.data.url.url} rel="noopener" target="_blank">↗</a>
           </div>
         }
@@ -84,7 +84,7 @@ export default class Projects extends React.Component {
               {project.data.url.url &&
                 <div className="mt-2 font-compagnon text-sm" >
                   <a
-                  href={project.data.url.url + '#test'}
+                  href={project.data.url.url}
                   rel="noopener"
                   target="_blank">
                     {project.data.url.url
