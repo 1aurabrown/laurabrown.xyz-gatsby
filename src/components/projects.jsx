@@ -58,14 +58,14 @@ export default class Projects extends React.Component {
 
         <div
         onClick={() => this.onToggle(project.id)}
-        className={titleRowClass + ' text-center'}>
+        className={titleRowClass + 'text-center'}>
           <div className={this.circleClass(project) + ' circle'}></div>
         </div>
 
 
         { project.data.url.url &&
           <div
-          className={titleRowClass + ' text-center'}>
+          className={titleRowClass + 'text-center'}>
             <a href={project.data.url.url} rel="noopener" target="_blank">↗</a>
           </div>
         }
@@ -77,8 +77,8 @@ export default class Projects extends React.Component {
           addState={true}
           className={styles.collapsable + " text-sm col-span-4 underline-links"}
           isOpen={this.state.selected === project.id }>
-            <div className={ 'max-w-screen-sm pt-4 pb-6'}>
-              <div>
+            <div className={ 'max-w-screen-sm pt-4 pb-6 ' }>
+              <div className=''>
                 {parse(project.data.description.html)}
               </div>
               {project.data.url.url &&
@@ -102,12 +102,12 @@ export default class Projects extends React.Component {
     )
   }
 
-  solidDivider() {
-    return (<hr className="col-span-4"></hr>)
+  solidDivider({ className = '' } = {}) {
+    return (<hr className={className + " col-span-4"}></hr>)
   }
 
-  dottedDivider() {
-    return (<hr className={styles.dottedBorder + " col-span-4"}></hr>)
+  dottedDivider({ className = '' } = {}) {
+    return (<hr className={styles.dottedBorder + " col-span-4 " + className}></hr>)
   }
 
   render() {

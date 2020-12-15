@@ -122,3 +122,16 @@
 .--c-collapsed a {
   visibility: hidden;
 }
+
+@screen print {
+  .--c-collapsed {
+    visibility: visible !important;
+    height: auto !important;
+  }
+  .--c-collapsed a {
+    visibility: visible
+  }
+  .avoid-break-inside {
+    page-break-inside: avoid;
+  }
+}

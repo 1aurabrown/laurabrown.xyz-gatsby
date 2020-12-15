@@ -19,6 +19,8 @@ export const onClientEntry = () => {
       case 4:
         bodyClass = 'compagnon-roman';
         break;
+      default:
+        bodyClass = 'compagnon-roman';
     }
     document.body.classList.add(bodyClass)
     document.body.classList.add('loaded')
